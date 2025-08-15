@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GHSS Central Calvathy — Events</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#ffc66b;--e1:#2a2b4a;--e2:#3b2e6b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;min-height:100vh;background:linear-gradient(135deg,var(--e1),var(--e2));color:white;overflow-x:hidden}
+.bg{position:fixed;inset:0;background:url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=1600&auto=format&fit=crop&s=7d4f4b8da3c8b5b3') center/cover no-repeat;filter:brightness(.6);z-index:0}
+.overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(2,36,63,0.6),rgba(2,36,63,0.6));z-index:1}
+.container{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:28px}
+.header{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#ffdba8,#ffc66b);display:grid;place-items:center;color:#2b1f12;font-weight:900}
+.nav{display:flex;gap:12px}
+.nav a{color:white;text-decoration:none;padding:8px 12px;border-radius:10px;transition:all .25s}
+.nav a:hover{background:rgba(255,255,255,0.04)}
+.events{margin-top:30px;display:grid;gap:18px}
+.event-link{text-decoration:none;color:inherit;display:block}
+.event{background:rgba(255,255,255,0.03);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;transition:all .3s ease}
+.event:hover{transform:translateY(-3px);background:rgba(255,255,255,0.06)}
+.event h4{margin-bottom:6px}
+.event small{color:rgba(255,255,255,0.75)}
+.footer{margin-top:30px;text-align:center;color:rgba(255,255,255,0.7)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:820px){.nav{display:none}.event{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <div id="transition-overlay" style="position:fixed;inset:0;display:none;z-index:9999;background:linear-gradient(180deg,rgba(2,36,63,0.9),rgba(4,20,40,0.95));align-items:center;justify-content:center">
+    <div style="width:64px;height:64px;border-radius:50%;border:6px solid rgba(255,255,255,0.12);border-top-color:var(--accent);animation:spin 1s linear infinite"></div>
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo">GH</div>
+        <div>
+          <div style="font-weight:700">Govt G H S S Central Calvathy</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.7)">Upcoming Events</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="calvathy_website.html" data-target>Home</a>
+        <a href="about.html" data-target>About</a>
+        <a href="services.html" data-target>Services</a>
+        <a href="news.html" data-target>News</a>
+        <a href="events.html" data-target>Events</a>
+        <a href="contact.html" data-target>Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="events">
+        <a href="independence.html" class="event-link" data-target>
+          <div class="event">
+            <div>
+              <h4>Distribution of library books</h4>
+              <small>10 July 2025 • auditorium</small>
+            </div>
+            <div>🎉</div>
+          </div>
+        </a>
+
+        <a href="bookfair.html" class="event-link" data-target>
+          <div class="event">
+            <div>
+              <h4>Book Fair</h4>
+              <small>5 September 2025 • Auditorium</small>
+            </div>
+            <div>📚</div>
+          </div>
+        </a>
+
+        <a href="sports.html" class="event-link" data-target>
+          <div class="event">
+            <div>
+              <h4>Annual Sports Meet</h4>
+              <small>22 October 2025 • Sports Field</small>
+            </div>
+            <div>🏆</div>
+          </div>
+        </a>
+
+         <a href="onam.html" class="event-link" data-target>
+          <div class="event">
+            <div>
+              <h4>Onam Celebration</h4>
+              <small>29 August 2025 • School Grounds</small>
+            </div>
+            <div>🏵️</div>
+          </div>
+        </a>
+
+
+
+
+
+
+      </section>
+    </main>
+
+    <div class="footer">© 2025 Govt G H S S Central Calvathy</div>
+  </div>
+
+<script>
+const overlay=document.getElementById('transition-overlay');
+document.querySelectorAll('a[data-target]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  overlay.style.display='flex';
+  setTimeout(()=>location.href=a.getAttribute('href'),520);
+}));
+</script>
+</body>
+</html>

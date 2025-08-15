@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GOVT HSS Central Calvathy — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#ffcc00;
+  --blue1:#0f4c81;
+  --blue2:#2468a9;
+  --glass: rgba(255,255,255,0.08);
+  --white-90: rgba(255,255,255,0.9);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto;
+  background: linear-gradient(135deg,var(--blue1),var(--blue2));
+  color:white;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* background image layer */
+.bg {
+  position:fixed;inset:0;
+  background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600&auto=format&fit=crop&s=8d62a8f2b1ef2a6e') center/cover no-repeat;
+  filter: saturate(0.85) contrast(0.95);
+  z-index:0;
+}
+.overlay{
+  position:fixed;inset:0;
+  background: linear-gradient(180deg, rgba(10,24,40,0.55), rgba(2,36,63,0.55));
+  z-index:1;
+  mix-blend-mode:overlay;
+}
+
+/* loader / transition overlay */
+#transition-overlay{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  background: linear-gradient(180deg, rgba(2,36,63,0.9), rgba(4,20,40,0.95));
+  pointer-events:none; opacity:0; transition:opacity .45s ease;
+}
+#transition-overlay.show{opacity:1; pointer-events:all}
+.loader-ring{
+  width:72px;height:72px;border-radius:50%;
+  border:6px solid rgba(255,255,255,0.12);
+  border-top-color:var(--accent);
+  animation: spin 1s linear infinite;
+  box-shadow:0 6px 30px rgba(0,0,0,0.45), 0 0 18px rgba(255,204,0,0.08);
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* layout */
+.container{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:28px}
+.header{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.06);
+  padding:12px 20px;border-radius:14px;
+  margin-top:16px;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;
+}
+.logo{
+  width:56px;height:56px;border-radius:12px;
+  background: linear-gradient(135deg,var(--accent),#ffd966);
+  display:flex;align-items:center;justify-content:center;color:#09324b;font-weight:900;font-size:20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+.site-title{font-size:18px;font-weight:700;color:var(--white-90)}
+.nav{
+  display:flex;gap:12px;align-items:center;
+}
+.nav a{
+  text-decoration:none;color:rgba(255,255,255,0.95);padding:8px 14px;border-radius:10px;
+  font-weight:600;transition:all .28s ease;
+}
+.nav a:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.35);color:var(--blue2);background:var(--glass)}
+
+/* hero */
+.hero{
+  margin:48px auto 24px; text-align:center; padding:64px 20px;border-radius:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 12px 40px rgba(2,20,40,0.45);
+}
+.hero h1{font-size:54px;line-height:1.02;letter-spacing:-1px;color: #fff;font-weight:900;text-shadow:0 12px 40px rgba(3,36,63,0.55)}
+.hero p{max-width:920px;margin:18px auto 0;color:rgba(235,235,235,0.9);font-size:18px}
+
+/* big nav buttons (center) */
+.cta-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:36px}
+.cta{
+  min-width:220px;padding:18px 28px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.06);backdrop-filter: blur(8px);
+  color:white;text-decoration:none;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:12px;
+  transform:translateY(0);transition:all .35s cubic-bezier(.2,.9,.2,1);
+  box-shadow: 0 8px 30px rgba(3,36,63,0.45);
+}
+.icon{
+  width:46px;height:46px;border-radius:10px;display:inline-grid;place-items:center;font-weight:800;
+  color:#04293a;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+.cta:hover{transform: translateY(-10px) scale(1.02);box-shadow:0 18px 50px rgba(2,36,63,0.6)}
+/* unique button colors */
+.btn-home .icon{background:linear-gradient(135deg,#ffd966,#ffb84d)}
+.btn-about .icon{background:linear-gradient(135deg,#8be3ff,#6aa6ff)}
+.btn-services .icon{background:linear-gradient(135deg,#a3ffb8,#5ef08a)}
+.btn-news .icon{background:linear-gradient(135deg,#ffd1ff,#ff88e1)}
+.btn-events .icon{background:linear-gradient(135deg,#ffdba8,#ffc66b)}
+.btn-contact .icon{background:linear-gradient(135deg,#c4b0ff,#8d77ff)}
+
+/* footer */
+.footer{margin:44px auto 56px;text-align:center;color:rgba(255,255,255,0.7)}
+
+/* responsive */
+@media (max-width:840px){
+  .hero h1{font-size:34px}
+  .logo{width:48px;height:48px;font-size:18px}
+  .nav{display:none}
+}
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <div id="transition-overlay"><div class="loader-ring"></div></div>
+
+  <div class="container">
+    <header class="header" role="banner">
+      <div class="brand">
+        <div class="logo">GH</div>
+        <div>
+          <div class="site-title">Govt H S S Central Calvathy</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.65)">Fort Kochi • Kerala</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" role="main" aria-labelledby="welcome-title">
+        <h1 id="welcome-title">Shaping Minds — Building Futures</h1>
+        <p>Welcome to Govt H S S Central Calvathy. We combine strong academics, digital classrooms and holistic activities to prepare students for tomorrow.</p>
+
+        <div class="cta-grid" aria-hidden="false">
+          <a href="about.html" class="cta btn-about" data-target="index.html"><span class="icon">👩‍🏫</span> About Us</a>
+          <a href="service.html" class="cta btn-services" data-target="service.html"><span class="icon">🧭</span> Our Services</a>
+          <a href="news.html" class="cta btn-news" data-target="news.html"><span class="icon">📰</span> Latest News</a>
+          <a href="events.html" class="cta btn-events" data-target="events.html"><span class="icon">🎉</span> Events</a>
+          <a href="contact.html" class="cta btn-contact" data-target="contact.html"><span class="icon">📞</span> Contact</a>
+          <a href="loginpanel.html" class="cta btn-contact" data-target="loginpanel.html"><span class="icon">🎈</span> school login</a>
+          <a href="social.html" class="cta btn-contact" data-target="social.html"><span class="icon">📱</span> Soical Media</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer">© 2025 Govt H S S Central Calvathy — All rights reserved</div>
+  </div>
+
+<script>
+/* smooth page transition: fade + slide */
+const overlay = document.getElementById('transition-overlay');
+document.querySelectorAll('a[data-target]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const href = a.getAttribute('data-target');
+    e.preventDefault();
+    overlay.classList.add('show');
+    setTimeout(()=> window.location.href = href, 550);
+  });
+});
+
+/* when page loads, make sure overlay hidden */
+window.addEventListener('pageshow', ()=> overlay.classList.remove('show'));
+</script>
+</body>
+</html>

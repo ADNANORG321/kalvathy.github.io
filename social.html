@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect With Us</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(270deg, #ff0057, #ff7f00, #00ffea, #7a00ff);
+        background-size: 800% 800%;
+        animation: rgbFlow 12s ease infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+        color: white;
+        text-align: center;
+    }
+
+    @keyframes rgbFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .logo {
+        width: 120px;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 0 15px rgba(255,255,255,0.5); }
+        50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,255,255,0.8); }
+        100% { transform: scale(1); box-shadow: 0 0 15px rgba(255,255,255,0.5); }
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+        text-shadow: 0 0 20px rgba(255,255,255,0.6);
+    }
+
+    .social-container {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 1.8rem;
+        color: white;
+        text-decoration: none;
+        background: rgba(255,255,255,0.1);
+        box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .social-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.3);
+        transform: skewX(-25deg);
+        transition: left 0.5s ease;
+    }
+
+    .social-btn:hover::before {
+        left: 100%;
+    }
+
+    .social-btn:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 25px rgba(255,255,255,0.8), 0 0 50px rgba(255,255,255,0.5);
+    }
+
+    /* Individual Colors */
+    .facebook { background: #3b5998; }
+    .instagram { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); }
+    .youtube { background: #ff0000; }
+    .twitter { background: #1da1f2; }
+    .linkedin { background: #0077b5; }
+</style>
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<img src="logo.png" alt="School Logo" class="logo">
+<h1>Connect With Us</h1>
+
+<div class="social-container">
+    <a href="https://facebook.com" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+    <a href="https://twitter.com" target="_blank" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+</body>
+</html>
